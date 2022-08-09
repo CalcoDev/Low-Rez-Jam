@@ -16,12 +16,13 @@ config/icon="res://Assets/Sprites/icon.png"
 
 [debug]
 
-settings/fps/force_fps=144
+settings/fps/force_fps=240
 
 [display]
 
 window/size/width=640
 window/size/height=640
+window/vsync/use_vsync=false
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
 
