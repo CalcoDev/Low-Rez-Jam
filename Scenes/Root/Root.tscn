@@ -4,10 +4,10 @@
 
 [node name="Root" type="Node2D"]
 
-[node name="ViewportContainer" type="ViewportContainer" parent="."]
+[node name="10x" type="ViewportContainer" parent="."]
 margin_right = 64.0
 margin_bottom = 64.0
 rect_scale = Vector2( 10, 10 )
 
-[node name="Player" parent="ViewportContainer" instance=ExtResource( 1 )]
-position = Vector2( 28, 23 )
+[node name="Player" parent="10x" instance=ExtResource( 1 )]
+position = Vector2( 32, 22 )
