@@ -1,3 +1,5 @@
+# mau was here
+
 extends KinematicBody2D
 
 var input = Vector2.ZERO
@@ -10,9 +12,11 @@ func _process(delta):
 	input.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 	input.y = -Input.get_action_strength("ui_up") + Input.get_action_strength("ui_down")
 	
-	# go pew pew
+	pew_pew()
 
 func _physics_process(delta):	
 	position += input
 
-# mau was here
+func pew_pew():
+	print("Testing github stuff lmao")
+  
