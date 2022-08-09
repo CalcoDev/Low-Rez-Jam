@@ -1,3 +1,5 @@
+# mau was here
+
 extends KinematicBody2D
 
 var input = Vector2.ZERO
@@ -17,3 +19,4 @@ func _physics_process(delta):
 
 func pew_pew():
 	print("Testing github stuff lmao")
+  
