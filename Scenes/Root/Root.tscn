@@ -5,6 +5,18 @@
 [ext_resource path="res://Assets/Sprites/Sun/sun.png" type="Texture" id=3]
 [ext_resource path="res://Scenes/Root/Sun/Sun.gd" type="Script" id=4]
 
+
+
+
+
+[ext_resource path="res://Scenes/UI/UI.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assets/Sprites/UI/WaterDrop.png" type="Texture" id=6]
+
+
+
+
+
+
 [sub_resource type="Animation" id=1]
 length = 0.001
 tracks/0/type = "value"
@@ -44,6 +56,11 @@ margin_right = 64.0
 margin_bottom = 64.0
 rect_scale = Vector2( 10, 10 )
 
+[node name="Player" parent="10x" instance=ExtResource( 1 )]
+position = Vector2( 22, 22 )
+scale = Vector2( 2, 2 )
+speed_wait_time = 0.03
+=======
 [node name="Environment" type="Node2D" parent="10x"]
 scale = Vector2( 1, 1 )
 
@@ -66,3 +83,33 @@ script = ExtResource( 4 )
 
 [node name="Player" parent="10x" instance=ExtResource( 1 )]
 position = Vector2( 28, 56 )
+
+
+
+
+
+
+
+
+[node name="UI" parent="10x" instance=ExtResource( 5 )]
+
+[node name="Health1" type="TextureRect" parent="10x/UI"]
+margin_left = -29.0
+margin_top = -29.0
+margin_right = 35.0
+margin_bottom = 35.0
+texture = ExtResource( 6 )
+
+[node name="Health2" type="TextureRect" parent="10x/UI"]
+margin_left = -24.0
+margin_top = -29.0
+margin_right = 40.0
+margin_bottom = 35.0
+texture = ExtResource( 6 )
+
+[node name="Health3" type="TextureRect" parent="10x/UI"]
+margin_left = -19.0
+margin_top = -29.0
+margin_right = 45.0
+margin_bottom = 35.0
+texture = ExtResource( 6 )
