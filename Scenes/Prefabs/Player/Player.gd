@@ -20,8 +20,8 @@ func _ready():
 	move_timer.wait_time = speed_wait_time
 
 func _process(delta):
-	input.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
-	input.y = -Input.get_action_strength("ui_up") + Input.get_action_strength("ui_down")
+	input.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
+	input.y = -Input.get_action_strength("move_up") + Input.get_action_strength("move_down")
 	
 	if Input.is_action_just_pressed("dash") and not dashing:
 		start_dash();
