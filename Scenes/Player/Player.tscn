@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Assets/Sprites/square.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Sprites/World/Player/square.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/Player/Player.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -9,6 +9,7 @@ extents = Vector2( 0.5, 0.5 )
 [node name="Player" type="KinematicBody2D"]
 scale = Vector2( 4, 4 )
 script = ExtResource( 2 )
+speed_dist = 1
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
