@@ -12,6 +12,7 @@ script = ExtResource( 2 )
 speed_dist = 1
 
 [node name="Sprite" type="Sprite" parent="."]
+modulate = Color( 0.45098, 0.745098, 0.827451, 1 )
 texture = ExtResource( 1 )
 centered = false
 

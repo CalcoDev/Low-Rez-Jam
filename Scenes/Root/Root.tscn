@@ -1,8 +1,53 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scenes/Player/Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Scenes/UI/UI.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Assets/Sprites/UI/WaterDrop.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Sprites/square.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Sprites/Sun/sun.png" type="Texture" id=3]
+[ext_resource path="res://Scenes/Root/Sun/Sun.gd" type="Script" id=4]
+
+
+
+
+
+[ext_resource path="res://Scenes/UI/UI.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assets/Sprites/UI/WaterDrop.png" type="Texture" id=6]
+
+
+
+
+
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sun:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "sun_spinning"
+length = 0.3
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sun:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 3 ]
+}
 
 [node name="Root" type="Node2D"]
 
@@ -15,26 +60,56 @@ rect_scale = Vector2( 10, 10 )
 position = Vector2( 22, 22 )
 scale = Vector2( 2, 2 )
 speed_wait_time = 0.03
+=======
+[node name="Environment" type="Node2D" parent="10x"]
+scale = Vector2( 1, 1 )
 
-[node name="UI" parent="10x" instance=ExtResource( 2 )]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="10x/Environment"]
+anims/RESET = SubResource( 1 )
+anims/sun_spinning = SubResource( 2 )
+
+[node name="Background" type="Sprite" parent="10x/Environment"]
+modulate = Color( 0.0823529, 0.113725, 0.156863, 1 )
+scale = Vector2( 64, 64 )
+texture = ExtResource( 2 )
+centered = false
+
+[node name="Sun" type="Sprite" parent="10x/Environment"]
+modulate = Color( 1, 1, 1, 0.498039 )
+position = Vector2( 32, 32 )
+texture = ExtResource( 3 )
+hframes = 4
+script = ExtResource( 4 )
+
+[node name="Player" parent="10x" instance=ExtResource( 1 )]
+position = Vector2( 28, 56 )
+
+
+
+
+
+
+
+
+[node name="UI" parent="10x" instance=ExtResource( 5 )]
 
 [node name="Health1" type="TextureRect" parent="10x/UI"]
 margin_left = -29.0
 margin_top = -29.0
 margin_right = 35.0
 margin_bottom = 35.0
-texture = ExtResource( 3 )
+texture = ExtResource( 6 )
 
 [node name="Health2" type="TextureRect" parent="10x/UI"]
 margin_left = -24.0
 margin_top = -29.0
 margin_right = 40.0
 margin_bottom = 35.0
-texture = ExtResource( 3 )
+texture = ExtResource( 6 )
 
 [node name="Health3" type="TextureRect" parent="10x/UI"]
 margin_left = -19.0
 margin_top = -29.0
 margin_right = 45.0
 margin_bottom = 35.0
-texture = ExtResource( 3 )
+texture = ExtResource( 6 )
