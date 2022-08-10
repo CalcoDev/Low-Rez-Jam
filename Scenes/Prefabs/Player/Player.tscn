@@ -19,8 +19,9 @@ centered = false
 position = Vector2( 0.5, 0.5 )
 shape = SubResource( 1 )
 
-[node name="PlayerTimer" type="Timer" parent="."]
+[node name="MovementTimer" type="Timer" parent="."]
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="DashDelayTimer" type="Timer" parent="."]
 
-[connection signal="timeout" from="PlayerTimer" to="." method="_on_PlayerTimer_timeout"]
+[connection signal="timeout" from="MovementTimer" to="." method="_on_MovementTimer_timeout"]
+[connection signal="timeout" from="DashDelayTimer" to="." method="_on_DashDelayTimer_timeout"]
