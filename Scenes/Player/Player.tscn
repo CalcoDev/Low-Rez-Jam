@@ -11,6 +11,7 @@ scale = Vector2( 4, 4 )
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
+modulate = Color( 0.45098, 0.745098, 0.827451, 1 )
 texture = ExtResource( 1 )
 centered = false
 

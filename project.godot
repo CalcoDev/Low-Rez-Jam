@@ -12,7 +12,6 @@ config_version=4
 
 config/name="Low Rez Jam"
 run/main_scene="res://Scenes/Root/Root.tscn"
-config/icon="res://Assets/Sprites/icon.png"
 
 [debug]
 
