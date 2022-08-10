@@ -4,17 +4,14 @@ extends KinematicBody2D
 onready var UI = get_parent().get_node("UI")
 onready var timer = get_node("PlayerTimer")
 
-export var speed_wait_time = 0.05
-export var speed_dist = 2
-
-
+export var speed_wait_time = 0.025
+export var speed_dist = 1
 
 var input = Vector2.ZERO
 var curr_pos = Vector2.ZERO
 var health = 3
 
 func _ready():
-	
 	curr_pos = position
 	timer.wait_time = speed_wait_time
 
@@ -25,7 +22,6 @@ func _process(delta):
 	
 	if Input.is_action_just_pressed("ui_left"):  # Just to test damage
 		take_damage()
-
 
 func _physics_process(delta):
 	alt_move_player()
@@ -42,8 +38,8 @@ func alt_move_player():
 		position += input
 		
 
-	if !input.x and !input.y and !get_node("PlayerTimer").is_stopped():
-		get_node("PlayerTimer").stop()
+	if !input.x and !input.y and !timer.is_stopped():
+		timer.stop()
 		
 	
 func take_damage():  # lmao imagine needing this function
