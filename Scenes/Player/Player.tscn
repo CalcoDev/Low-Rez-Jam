@@ -17,3 +17,7 @@ centered = false
 [node name="Collider" type="CollisionShape2D" parent="."]
 position = Vector2( 0.5, 0.5 )
 shape = SubResource( 1 )
+
+[node name="PlayerTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="PlayerTimer" to="." method="_on_PlayerTimer_timeout"]
