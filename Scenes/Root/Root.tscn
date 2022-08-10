@@ -11,3 +11,4 @@ rect_scale = Vector2( 10, 10 )
 
 [node name="Player" parent="10x" instance=ExtResource( 1 )]
 position = Vector2( 32, 22 )
+scale = Vector2( 1, 1 )
