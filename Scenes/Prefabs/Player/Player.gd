@@ -44,17 +44,12 @@ func move_player():
 		
 	if !input.x and !input.y and not move_timer.is_stopped():
 		move_timer.stop()
+		
 
 func clamp_to_arena():
-	if position.x < 0:
-		position.x = 0
-	elif position.x > 60:
-		position.x = 60
 	
-	if position.y < 0:
-		position.y = 0
-	elif position.y > 60:
-		position.y = 60
+	position.x = clamp(position.x, 0, 60)
+	position.y = clamp(position.y, 0, 60)
 
 #### Dashing
 

@@ -15,7 +15,7 @@ run/main_scene="res://Scenes/Stages/StartMenu/StartMenu.tscn"
 
 [debug]
 
-settings/fps/force_fps=240
+settings/fps/force_fps=60
 
 [display]
 
