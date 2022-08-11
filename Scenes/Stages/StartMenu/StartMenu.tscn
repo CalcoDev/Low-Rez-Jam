@@ -50,5 +50,4 @@ texture = ExtResource( 4 )
 position = Vector2( 32, 55 )
 frames = SubResource( 3 )
 animation = "Press START"
-frame = 1
 playing = true
