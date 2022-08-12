@@ -1,0 +1,99 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Scenes/Stages/Game/Sun.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Prefabs/Player/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Stages/UI/UI.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/Sprites/square.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Sprites/Sun/sun.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Sprites/UI/WaterDrop.png" type="Texture" id=6]
+[ext_resource path="res://Scenes/Prefabs/Enemy/Enemy.tscn" type="PackedScene" id=7]
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sun:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "sun_spinning"
+length = 0.3
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sun:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 3 ]
+}
+
+[node name="Root" type="Node2D"]
+
+[node name="10x" type="ViewportContainer" parent="."]
+margin_right = 64.0
+margin_bottom = 64.0
+rect_scale = Vector2( 10, 10 )
+
+[node name="Environment" type="Node2D" parent="10x"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="10x/Environment"]
+anims/RESET = SubResource( 1 )
+anims/sun_spinning = SubResource( 2 )
+
+[node name="Background" type="Sprite" parent="10x/Environment"]
+modulate = Color( 0.0823529, 0.113725, 0.156863, 1 )
+scale = Vector2( 64, 64 )
+texture = ExtResource( 4 )
+centered = false
+
+[node name="Sun" type="Sprite" parent="10x/Environment"]
+modulate = Color( 1, 1, 1, 0.498039 )
+position = Vector2( 32, 32 )
+texture = ExtResource( 5 )
+hframes = 4
+script = ExtResource( 1 )
+
+[node name="Player" parent="10x" instance=ExtResource( 2 )]
+position = Vector2( 30, 56 )
+
+[node name="Enemy" parent="10x" instance=ExtResource( 7 )]
+position = Vector2( 15, 25 )
+scale = Vector2( 1, 1 )
+
+[node name="UI" parent="10x" instance=ExtResource( 3 )]
+margin_right = 64.0
+margin_bottom = 64.0
+
+[node name="Health1" type="TextureRect" parent="10x/UI"]
+margin_left = -29.0
+margin_top = -29.0
+margin_right = 35.0
+margin_bottom = 35.0
+texture = ExtResource( 6 )
+
+[node name="Health2" type="TextureRect" parent="10x/UI"]
+margin_left = -24.0
+margin_top = -29.0
+margin_right = 40.0
+margin_bottom = 35.0
+texture = ExtResource( 6 )
+
+[node name="Health3" type="TextureRect" parent="10x/UI"]
+margin_left = -19.0
+margin_top = -29.0
+margin_right = 45.0
+margin_bottom = 35.0
+texture = ExtResource( 6 )
