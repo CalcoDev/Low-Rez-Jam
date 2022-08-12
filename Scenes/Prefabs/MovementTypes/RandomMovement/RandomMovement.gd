@@ -27,7 +27,7 @@ func choose_new_dir():
 	
 	# Start timer
 	
-	var wait_time = rand_range(0.5, 2)
+	var wait_time = rand_range(0.1, 1)
 	timer.wait_time = wait_time
 	timer.start()
 	

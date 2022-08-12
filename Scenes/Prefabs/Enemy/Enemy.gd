@@ -34,3 +34,9 @@ func clamp_pos():
 
 func _on_SpeedTimer_timeout():
 	base_move()
+	
+### SHOOTEMENT
+
+func shoot(pos, speed, dir):
+	
+	pass

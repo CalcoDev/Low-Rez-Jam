@@ -3,6 +3,8 @@ extends KinematicBody2D
 onready var UI = get_parent().get_node("UI")
 onready var move_timer = get_node("MovementTimer")
 onready var dash_delay_timer = get_node("DashDelayTimer")
+onready var shoot_delay_timer = get_node("ShootDelayTimer")
+onready var shooting_node = get_node("ShootingNode")
 
 export var speed_wait_time = 0.025
 export var speed_dist = 1
@@ -13,6 +15,9 @@ var dashing = false
 
 var input = Vector2.ZERO
 var health = 3
+
+var can_shoot = true
+var aim_dir 
 
 #### Lifecycle
 
@@ -75,7 +80,33 @@ func take_damage():  # lmao imagine needing this function
 	UI.update_health(health)
 	# player does not die cuz it pro and itd mean some sort of menu to restart or smthing will do later
 
-### Timers
+#### Shootement
+
+func shoot():
+	
+	if Input.is_action_just_pressed("shoot") and can_shoot:
+		
+		shooting_node.shoot()
+		can_shoot = false
+		
+func aim():
+	
+	if Input.is_action_pressed("ui_down"):
+		aim_dir.y = 1
+	if Input.is_action_pressed("ui_up"):
+		aim_dir.y = -1
+	else:
+		aim_dir.y = 0
+		
+	if Input.is_action_pressed("ui_left"):
+		aim_dir.x = -1
+	if Input.is_action_pressed("ui_right"):
+		aim_dir.x = 1
+	else:
+		aim_dir.x = 0
+
+
+#### Timers
 
 func _on_MovementTimer_timeout():
 	position += input * speed_dist
@@ -83,3 +114,7 @@ func _on_MovementTimer_timeout():
 
 func _on_DashDelayTimer_timeout():
 	stop_dash()
+
+
+func _on_ShootDelayTimer_timeout():
+	can_shoot = true
