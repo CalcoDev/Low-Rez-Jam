@@ -11,6 +11,8 @@ export var speed_dist = 1
 
 export var dash_delay = 1 # In seconds
 
+export var bullet_speed = 0.01
+
 var dashing = false
 
 var input = Vector2.ZERO
@@ -53,8 +55,8 @@ func move_player():
 
 func clamp_to_arena():
 	
-	position.x = clamp(position.x, 0, 60)
-	position.y = clamp(position.y, 0, 60)
+	position.x = clamp(position.x, 0, 61)
+	position.y = clamp(position.y, 0, 61)
 
 #### Dashing
 
@@ -86,7 +88,9 @@ func shoot():
 	
 	if Input.is_action_just_pressed("shoot") and can_shoot:
 		
-		shooting_node.shoot()
+		var spn_pos = aim_dir + Vector2(1, 1)
+		
+		shooting_node.shoot(spn_pos, bullet_speed, aim_dir)
 		can_shoot = false
 		
 func aim():
@@ -104,7 +108,10 @@ func aim():
 		aim_dir.x = 1
 	else:
 		aim_dir.x = 0
-
+	
+	if aim_dir == Vector2.ZERO:
+		aim_dir == Vector2(0, -1)
+		
 
 #### Timers
 
